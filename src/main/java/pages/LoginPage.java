@@ -36,4 +36,33 @@ public class LoginPage {
     @FindBy(css = ".validation-summary-errors>ul>li")
     public List<WebElement> loginErrors;
 
+    public HomePage login(String email, String password) {
+        typeEmail(email);
+        typePassword(password);
+        submitLogin();
+
+        return new HomePage(driver);
+    }
+
+    public LoginPage typeEmail(String email) {
+        emailTxt.clear();
+        emailTxt.sendKeys(email);
+
+        return this;
+    }
+
+    public LoginPage typePassword(String password) {
+        passwordTxt.clear();
+        passwordTxt.sendKeys(password);
+
+        return this;
+    }
+
+    public HomePage submitLogin() {
+        loginBtn.click();
+
+        return new HomePage(driver);
+    }
+
+
 }
