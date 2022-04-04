@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ public class LoginPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(css = ".flash-message>strong")
     private WebElement logoutMsg;
 
@@ -45,14 +47,11 @@ public class LoginPage {
     }
 
     public LoginPage typeEmail(String email) {
-        emailTxt.clear();
         emailTxt.sendKeys(email);
-
         return this;
     }
 
     public LoginPage typePassword(String password) {
-        passwordTxt.clear();
         passwordTxt.sendKeys(password);
 
         return this;

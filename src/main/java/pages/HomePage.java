@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class HomePage extends SeleniumPage {
     public HomePage(WebDriver driver) {
@@ -39,6 +40,14 @@ public class HomePage extends SeleniumPage {
 
         return new LoginPage(driver);
     }
+
+    public HomePage assertWelcomeElementIsShown() {
+        Assert.assertTrue(welcomeElm.isDisplayed(), "Welcome element is not shown.");
+        Assert.assertTrue(welcomeElm.getText().contains("Welcome"), "Welcome element text: '" + welcomeElm.getText() + "' does not contain word 'Welcome'");
+
+        return this;
+    }
+
 
 
 }
